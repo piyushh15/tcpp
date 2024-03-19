@@ -14,7 +14,7 @@ class CarPlateViewer extends Component {
     const headers = {
       Authorization: `${authToken}`,
     };
-    axios.get('http://localhost:5000/data',{headers}).then((response) => {
+    axios.get('https://tcpp-backend.onrender.com/data',{headers}).then((response) => {
         this.setState({ data: response.data });
       })
       .catch((error) => {
