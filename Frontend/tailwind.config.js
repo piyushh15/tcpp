@@ -28,6 +28,11 @@ export default {
         "pale-blue": "#F5F6FF",
         "white-400": "rgba(255, 255, 255, 0.80)",
         "black-blur": "#4D4855",
+        'custom-blue': 'rgb(6,5,19)',
+        'custom-gray': 'rgba(100,99,110,1)',
+        'custom-light-gray': 'rgba(174,172,207,1)',
+        'custom-dark-gray': 'rgba(190,190,208,1)',
+        'custom-white': 'rgba(231,240,242,1)',
       },
       boxShadow: {
         '3xl': '0 10px 40px rgba(0, 0, 0, 0.1)'

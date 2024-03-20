@@ -38,7 +38,7 @@ const Login = () => {
   
   return (
     <section>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
@@ -65,7 +65,11 @@ const Login = () => {
           <div>
           <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
           </div>
-          <Link to="/createuser" className="font-monte m-3 mx-1 mt-8 pt-10"> New user</Link>
+          <button className="rounded-lg border-black">
+          <Link to="/createuser" className="flex w-40 justify-center items-center rounded-md bg-coral-red px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> New user</Link>
+
+          </button>
+         
         </form>
 
       </div>

@@ -231,8 +231,8 @@ async function sendImageToModel(imagePath) {
 app.get('/data', authenticateUser, async (req, res) => {
     try {
       const data = await Image.find({ 'UserData': req.user }); 
-      // console.log(data);
-      console.log(req.user);
+      //console.log(data);
+      //console.log(req.user);
       return res.status(200).json(data);
     } catch (error) {
       console.error('Error fetching data:', error);
