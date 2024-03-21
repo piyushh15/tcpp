@@ -63,7 +63,7 @@ class CarPlateViewer extends Component {
                       />
                     )}
                   </td>
-                  <td className="py-4 px-6 border-b border-gray-200">{item.carPlateNumber}</td>
+                  <td className="py-4 px-6 border-b border-gray-200">{item.carPlateNumber.toUpperCase()}</td>
                   <td className='py-4 px-6 border-b border-gray-200'>{item.timestamp}</td>
                 </tr>
               ))}
