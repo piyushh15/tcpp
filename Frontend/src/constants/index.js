@@ -2,14 +2,14 @@ import { facebook, instagram,twitter } from "../assets/icons";
 
 export const footerLinks = [
     {
-        title: "Products",
+        title: "Services",
         links: [
-            { name: "Air Force 1", link: "/" },
-            { name: "Air Max 1", link: "/" },
-            { name: "Air Jordan 1", link: "/" },
-            { name: "Air Force 2", link: "/" },
-            { name: "Nike Waffle Racer", link: "/" },
-            { name: "Nike Cortez", link: "/" },
+            { name: "lorem ipsum", link: "/" },
+            { name: "lorem ipsum", link: "/" },
+            { name: "lorem ipsum", link: "/" },
+            { name: "lorem ipsum", link: "/" },
+            { name: "lorem ipsum", link: "/" },
+            { name: "lorem ipsum", link: "/" },
         ],
     },
     {
@@ -25,8 +25,8 @@ export const footerLinks = [
     {
         title: "Get in touch",
         links: [
-            { name: "customer@nike.com", link: "mailto:customer@nike.com" },
-            { name: "+92554862354", link: "tel:+92554862354" },
+            { name: "customer@SecureCar.com", link: "mailto:customer@SecureCar.com" },
+            { name: "+918766302073", link: "tel:+918766302073" },
         ],
     },
 ];

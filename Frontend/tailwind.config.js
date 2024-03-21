@@ -20,6 +20,8 @@ export default {
       fontFamily: {
         palanquin: ['Palanquin', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
+        madimi: ["Madimi One", 'sans-serif']
+
       },
       colors: {
         'primary': "#ECEEFF",
@@ -33,6 +35,9 @@ export default {
         'custom-light-gray': 'rgba(174,172,207,1)',
         'custom-dark-gray': 'rgba(190,190,208,1)',
         'custom-white': 'rgba(231,240,242,1)',
+
+        "custom-green":"#D6FF7F",
+        "custom-bluish":"#00B2CC",
       },
       boxShadow: {
         '3xl': '0 10px 40px rgba(0, 0, 0, 0.1)'
