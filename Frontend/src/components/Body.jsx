@@ -13,9 +13,9 @@ const Upper = () => {
             ></img>
           </div>
           <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding pt-15"  >
-          <h2 className="text-custom-blue   text-xl font-madimi font-bold"> Security used to be an inconvenience sometimes,</h2>
-          <h2 className="mt-10 font-madimi text-4xl max-sm:text-[36px] max-sm:leading-[42px]"> but now it`s a necessity all the time.</h2>
-          <h3 className="font-madimi text-lg leading-9 mt-6 mb-14 sm:max-w-sm font-bold"> Let`s start to secure our Area with a small step Now!!!</h3>
+          <h2 className="text-white font-madimi text-xl font-bold"> Security used to be an inconvenience sometimes,</h2>
+          <h2 className="mt-10 font-madimi text-4xl max-sm:text-[36px] max-sm:leading-[42px] text-white"> but now it`s a necessity all the time.</h2>
+          <h3 className="font-madimi text-lg leading-9 mt-6 mb-14 sm:max-w-sm font-bold text-white"> Let`s start to secure our Area with a small step Now!!!</h3>
       </div>
         
       

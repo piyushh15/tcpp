@@ -1,11 +1,12 @@
 import { Component } from 'react';
 import axios from 'axios';
-
+import {loader} from "../assets/icons"
 class CarPlateViewer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      isLoading: true, // Add isLoading state to track loading status
     };
   }
 
@@ -16,21 +17,34 @@ class CarPlateViewer extends Component {
     };
     axios.get('https://tcpp-backend.onrender.com/data', { headers })
       .then((response) => {
-        this.setState({ data: response.data });
+        this.setState({ data: response.data, isLoading: false }); // Set isLoading to false when data is fetched
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        this.setState({ isLoading: false }); // Set isLoading to false even if there's an error
       });
   }
 
   getImageSrc(item) {
-    // Convert Uint8Array to a string
     const base64String = new Uint8Array(item.Image.data.data)
       .reduce((acc, byte) => acc + String.fromCharCode(byte), '');
-    // Encode the string to base64
     const encodedString = btoa(base64String);
-    // Return the data URL
     return `data:image/${item.Image.contentType};base64,${encodedString}`;
+  }
+
+  getIndianDateTime = (timestamp) => {
+    const date = new Date(timestamp);
+    const options = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false,
+      timeZone: 'Asia/Kolkata'
+    };
+    return date.toLocaleString('en-IN', options).replace(',', '');
   }
 
   renderTable() {
@@ -64,7 +78,7 @@ class CarPlateViewer extends Component {
                     )}
                   </td>
                   <td className="py-4 px-6 border-b border-gray-200">{item.carPlateNumber.toUpperCase()}</td>
-                  <td className='py-4 px-6 border-b border-gray-200'>{item.timestamp}</td>
+                  <td className='py-4 px-6 border-b border-gray-200'>{this.getIndianDateTime(item.timestamp)}</td>
                 </tr>
               ))}
             </tbody>
@@ -75,12 +89,21 @@ class CarPlateViewer extends Component {
   }
 
   render() {
+    const { isLoading } = this.state;
+  
     return (
-      <div>
-        {this.renderTable()}
+      <div className="flex justify-center items-center h-full">
+        {isLoading ? ( // Render loader if isLoading is true, otherwise render table
+          <div className="flex justify-center items-center">
+            <img src={loader} alt="Loading..." />
+          </div>
+        ) : (
+          this.renderTable()
+        )}
       </div>
     );
   }
+  
 }
 
 export default CarPlateViewer;
