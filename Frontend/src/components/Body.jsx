@@ -1,30 +1,42 @@
-
-
-
 const Upper = () => {
   return (
-    <section id="home" className="w-full flex xl:flex-row flex-col justify-center min-h-screen gap-10 max-container min-h-full" >
-      
-        <div className="relative flex-1 flex justify-center items-center xl:min-h-screen max-xl:py-4 bg-cover bg-center gap-20">
-          <div className="object-contain relative z-10">
-            <img className="rounded-2xl"
-              alt=""
-              src="https://img.freepik.com/free-photo/3d-data-technology-background-with-low-poly-plexus-design_1048-18066.jpg?size=626&ext=jpg&ga=GA1.1.315140480.1698958348&semt=ais"
-            ></img>
-          </div>
-          <div className="relative xl:w-2/5 flex flex-col justify-center items-start w-full max-xl:padding pt-15"  >
-          <h2 className="text-white font-madimi text-xl font-bold"> Security used to be an inconvenience sometimes,</h2>
-          <h2 className="mt-10 font-madimi text-4xl max-sm:text-[36px] max-sm:leading-[42px] text-white"> but now it`s a necessity all the time.</h2>
-          <h3 className="font-madimi text-lg leading-9 mt-6 mb-14 sm:max-w-sm font-bold text-white"> Let`s start to secure our Area with a small step Now!!!</h3>
-      </div>
-        
-      
-    </div>
+    <section className="relative w-full min-h-screen flex items-center justify-center">
+    
+      {/* Left background image */}
+      <div
+        className="absolute inset-y-0 left-0 w-1/2 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://img.freepik.com/free-photo/3d-data-technology-background-with-low-poly-plexus-design_1048-18066.jpg?size=626&ext=jpg&ga=GA1.1.315140480.1698958348&semt=ais')`,
+          backgroundPosition: "left",
+        }}
+      ></div>
 
+      {/* Right background image */}
+      <div
+        className="absolute inset-y-0 right-0 w-1/2 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://img.freepik.com/free-photo/3d-data-technology-background-with-low-poly-plexus-design_1048-18066.jpg?size=626&ext=jpg&ga=GA1.1.315140480.1698958348&semt=ais')`,
+          backgroundPosition: "right",
+        }}
+      ></div>
+
+      {/* Gradient overlay in between with fade effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black to-transparent opacity-70"></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black to-transparent opacity-70"></div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center w-3/5 text-center mx-10 px-10 text-white font-jetbrains">
+        <h2 className="text-8xl leading-1 py-10">
+          High Performance
+          <br />
+          <span className="text-emerald-600 text-7xl">Car Plate Recogniser</span>
+        </h2>
+       
+        <h3 className="mt-6 text-4xl leading-snug font-semibold">
+          Let`s start to secure our Area with a small step Now!!!
+        </h3>
+      </div>
     </section>
   );
 };
 
 export default Upper;
-
-

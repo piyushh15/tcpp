@@ -6,7 +6,7 @@ import CarPlateViewer from './screens/CarPlateViewer'
 const App = () => {
   return (
    <Router>
-    <div className='bg-gradient-to-r from-neutral-900 to-neutral-900'>
+    <div>
       <Routes>
         <Route exact path="/" element={<Home/>}></Route>
         <Route exact path="/login" element={<Login/>}></Route>

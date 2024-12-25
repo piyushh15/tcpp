@@ -7,9 +7,7 @@ export const footerLinks = [
             { name: "lorem ipsum", link: "/" },
             { name: "lorem ipsum", link: "/" },
             { name: "lorem ipsum", link: "/" },
-            { name: "lorem ipsum", link: "/" },
-            { name: "lorem ipsum", link: "/" },
-            { name: "lorem ipsum", link: "/" },
+            
         ],
     },
     {

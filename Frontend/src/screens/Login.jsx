@@ -1,83 +1,130 @@
-import {useState } from "react";
-import {Link,useNavigate} from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  let navigate=useNavigate();
-    const [credentials, setCredentials] = useState({email:"",password:""})  //This variable holds the user's email and password as an object.
+  let navigate = useNavigate();
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false); // Track loading state
 
-    const handleSubmit=async (e)=>{
-        e.preventDefault();   //It prevents the default form submission behavior using e.preventDefault() to avoid a page reload.
-        //it sends a POST request to a server endpoint (http://localhost:5000/api/loginuser) with the user's email and password as JSON data in the request body.
-        const response= await fetch("https://tcpp-backend.onrender.com/loginuser",{  
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
-            },
-            body:JSON.stringify( {email:credentials.email,password:credentials.password})
-        })
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // Set loading to true when form is submitted
 
-        //Upon receiving a response from the server, it parses the JSON response (json) and checks if json.success is true.
-        const json=await response.json()
-        
+    const response = await fetch("https://tcpp-backend.onrender.com/loginuser", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email: credentials.email, password: credentials.password }),
+    });
 
-        if(json.success){
-          //If the login is successful (json.success is true), it stores an authentication token (json.authToken) in the browser's local storage using localStorage.setItem.
-          // This token is typically used to authenticate the user for subsequent requests.
-          localStorage.setItem("authToken",json.authToken);
-          navigate("/");
-        }
-        else {
-          alert("Enter Valid Credentials");
-          
-        }
+    const json = await response.json();
+    setLoading(false); // Set loading to false after response
+
+    if (json.success) {
+      localStorage.setItem("authToken", json.authToken);
+      navigate("/data");
+    } else {
+      alert("Enter Valid Credentials");
     }
-    const onChange = (e) => {
-        setCredentials({ ...credentials, [e.target.name]: e.target.value })     
-    }
+  };
 
-  
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
   return (
-    <section>
-      <div className="flex min-h-screen flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img className="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"/>
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">Sign in to your account</h2>
+    <section className="relative w-full min-h-screen flex items-center justify-center">
+      {/* Left background image */}
+      <div
+        className="absolute inset-y-0 left-0 w-1/2 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://img.freepik.com/free-photo/3d-data-technology-background-with-low-poly-plexus-design_1048-18066.jpg?size=626&ext=jpg&ga=GA1.1.315140480.1698958348&semt=ais')`,
+          backgroundPosition: "left",
+        }}
+      ></div>
+
+      {/* Right background image */}
+      <div
+        className="absolute inset-y-0 right-0 w-1/2 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://img.freepik.com/free-photo/3d-data-technology-background-with-low-poly-plexus-design_1048-18066.jpg?size=626&ext=jpg&ga=GA1.1.315140480.1698958348&semt=ais')`,
+          backgroundPosition: "right",
+        }}
+      ></div>
+
+      {/* Gradient overlay in between with fade effect */}
+      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black to-transparent opacity-70"></div>
+      <div className="absolute inset-0 bg-gradient-to-l from-transparent via-black to-transparent opacity-70"></div>
+
+      <div className="z-10 flex flex-col justify-start">
+        <div>
+          <h2 className="mt-10 text-center text-4xl font-poppins font-bold leading-snug text-white">
+            Welcome Back, <br />
+            <span className="text-teal-800">Log in to your Account</span>
+          </h2>
         </div>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          
+        <div className="mt-10 mx-auto w-full ">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">Email address</label>
-              <div className="mt-2"> 
-              <input id="email" name="email" type="email" required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" value={credentials.email} onChange={onChange}/></div>
+              <label
+                htmlFor="email"
+                className="block text-xl font-medium leading-6 text-white font-poppins"
+              >
+                Email address
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="w-full p-2 mt-2 rounded-md"
+                value={credentials.email}
+                onChange={onChange}
+              />
             </div>
 
-          <div>
-            <div className="flex items-center justify-between">
-              <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">Password</label>
+            <div>
+              <label
+                htmlFor="password"
+                className="block text-xl font-poppins font-medium leading-6 text-white "
+              >
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={credentials.password}
+                onChange={onChange}
+                required
+                className="w-full p-2 mt-2 rounded-md font-poppins"
+              />
             </div>
-            <div className="mt-2">
-              <input id="password" name="password" type="password" value={credentials.password} onChange={onChange} required className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"/>
+
+            <div className="pt-2">
+              <button
+                type="submit"
+                className="flex w-full justify-center bg-teal-900 p-3 text-white text-xl font-poppins rounded-lg"
+                disabled={loading} // Disable button while loading
+              >
+                {loading ? "Submitting..." : "Sign in"} {/* Show "Submitting..." while loading */}
+              </button>
             </div>
-          </div>
-
-          <div>
-          <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</button>
-          </div>
-          <button className="rounded-lg border-black">
-          <Link to="/createuser" className="flex w-40 justify-center items-center rounded-md bg-coral-red px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> New user</Link>
-
-          </button>
-         
-        </form>
-
+            <button className="rounded-lg border-black">
+              <Link
+                to="/createuser"
+                className="flex w-40 justify-center items-center rounded-md font-poppins text-xl bg-teal-600 p-3  text-white shadow-sm "
+              >
+                New user
+              </Link>
+            </button>
+          </form>
+        </div>
       </div>
-    </div>
-
     </section>
-                                                              
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

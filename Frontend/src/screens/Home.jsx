@@ -1,19 +1,23 @@
-import Navbar from '../components/Navbar'
-import Body from '../components/Body'
-import Footer from '../components/Footer'
+import Navbar from '../components/Navbar';
+import Body from '../components/Body';
+import Footer from '../components/Footer';
+import Card from '../components/Card';
 
 const Home = () => {
   return (
-    <main className='relative' >
-        <Navbar/>
-        <section className="padding " >
-            <Body/>
-        </section>
-        <section  className=" padding-x padding-t pb-8 bg-black">
-            <Footer/>
-        </section>
+    <main>
+      <Navbar />
+      <section>
+        <Body />
+      </section>
+      <section id="cardSection">
+        <Card />
+      </section>
+      <section id="footerSection">
+        <Footer />
+      </section>
     </main>
-  )
+  );
 }
 
-export default Home
+export default Home;

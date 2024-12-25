@@ -6,48 +6,47 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const checkLoginStatus = () => {
-    // Check if the authentication token exists in localStorage
     const authToken = localStorage.getItem('authToken');
-    setIsLoggedIn(!!authToken); // Set isLoggedIn based on the presence of authToken
+    setIsLoggedIn(!!authToken); 
   };
 
   useEffect(() => {
     checkLoginStatus();
-  }, []); // Run the check when the component mounts
+  }, []); 
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
-    setIsLoggedIn(false); // Update state to reflect user logout
-    navigate('/'); // Navigate to the default page
+    setIsLoggedIn(false); 
+    navigate('/'); 
   };
 
   return (
-    <header className='padding-x py-8 absolute z-10 w-full'>
-      <nav className='flex justify-between items-center max-container'>
-        <a href="/">
-          <span className="font-madimi text-4xl bg-gradient-to-r bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">SecureCar</span>
-        </a>
-
-        <ul className='flex-1 flex justify-end items-center gap-16 max-lg:hidden'>
-          <li className="list-none"><Link className="font-madimi text-xl text-white font-bold " aria-current="page" to="/">Home</Link></li>
+    <div className='px-16 py-8 absolute z-10 w-full'>
+      <div className='flex justify-around'>
+        <div className='flex-1 flex justify-between items-center gap-16 max-lg:hidden'>
+          <a href="/"><span className="font-briem text-3xl text-white font-bold">SecureCar</span></a>
           {isLoggedIn ? (
             <>
-              <li className="list-none"><Link className="font-madimi text-xl text-white font-bold " aria-current="page" to="/data">Data</Link></li>
-              <li className="list-none"><button className="font-madimi text-xl text-white font-bold " onClick={handleLogout}>Logout</button></li>
+              <ul>
+                <li className="list-none"><button className="font-poppins text-2xl text-white font-semibold" onClick={handleLogout}>Logout</button></li>
+              </ul>
             </>
           ) : (
             <>
-              <li className="list-none"><Link className="font-madimi text-xl text-white font-bold " aria-current="page" to="/login">Login</Link></li>
-              <li className="list-none"><Link className="font-madimi text-xl text-white font-bold " aria-current="page" to="/createuser">SignUp</Link></li>
+              <ul className="flex gap-9">
+                <li className="list-none"><Link className="font-poppins text-2xl text-white font-semibold" aria-current="page" to="/">Home</Link></li>
+                <li className="list-none"><a className="font-poppins text-2xl text-white font-semibold" href="#cardSection">Working</a></li>
+                <li className="list-none"><a className="font-poppins text-2xl text-white font-semibold" href="#footerSection">About Us</a></li>
+              </ul>
+              <ul className="flex gap-9">
+                <li className="list-none"><Link className="font-poppins text-2xl text-white font-semibold" aria-current="page" to="/login">Login</Link></li>
+                <li className="list-none"><Link className="font-poppins text-2xl text-white font-semibold" aria-current="page" to="/createuser">SignUp</Link></li>
+              </ul>
             </>
           )}
-        </ul>
-
-        <div className='hidden max-lg:block'>
-          {/* Additional content for larger screens if needed */}
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
   );
 }
 
